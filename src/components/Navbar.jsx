@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 
-function Navbar (){
-    return (
-<nav className="navbar navbar-expand-lg bg-body-tertiary">
+function Navbar() {
+  return (
+    <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
-        {/* <img src={logo} alt="logo" height="75vw" /> */}
+          {/* <img src={logo} alt="logo" height="75vw" /> */}
         </Link>
         <button
           className="navbar-toggler"
@@ -40,7 +40,17 @@ function Navbar (){
                 SignUp
               </Link>
             </li>
-            
+            <ul className="nav">
+              <li className="nav-item">
+                <button className="btn btn-outline-success">
+                  <Link to="/create" style={{ textDecoration: 'none', color: 'inherit' }}>
+                    Post a Job
+                  </Link>
+                </button>
+              </li>
+            </ul>
+
+
           </ul>
           {/* <form className="d-flex" role="search">
             <input
@@ -56,6 +66,6 @@ function Navbar (){
         </div>
       </div>
     </nav>
-    )
+  )
 }
 export default Navbar;

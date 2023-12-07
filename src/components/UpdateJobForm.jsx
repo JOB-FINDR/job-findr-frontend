@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
+import { useNavigate, useParams } from "react-router-dom";
 
-const API_URL = "http://localhost:5005/api";
+const API_URL = "http://localhost:5005/api/jobs";
 
-function PostJobForm({ getJobs }) {
+function UpdateJobForm() {
   const [jobTitle, setJobTitle] = useState("");
   const [company, setCompany] = useState("");
   const [jobLocation, setJobLocation] = useState("");
@@ -12,6 +12,26 @@ function PostJobForm({ getJobs }) {
   const [description, setDescription] = useState("");
 
   const navigate = useNavigate();
+  const { id } = useParams();
+
+  useEffect(() => {
+    const fetchJobDetails = async () => {
+      try {
+        const response = await axios.get(`${API_URL}/${id}`);
+        const job = response.data;
+
+        setJobTitle(job.jobTitle);
+        setCompany(job.company);
+        setJobLocation(job.jobLocation);
+        setJobType(job.jobType);
+        setDescription(job.description);
+      } catch (error) {
+        console.error("Error fetching job details", error);
+      }
+    };
+
+    fetchJobDetails();
+  }, [id]);
 
   const handleJobTitle = (e) => setJobTitle(e.target.value);
   const handleCompany = (e) => setCompany(e.target.value);
@@ -20,10 +40,10 @@ function PostJobForm({ getJobs }) {
   const handleDescription = (e) => setDescription(e.target.value);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-
     try {
-      const createJob = {
+      e.preventDefault();
+
+      const updatedJob = {
         jobTitle,
         company,
         jobLocation,
@@ -31,20 +51,11 @@ function PostJobForm({ getJobs }) {
         description,
       };
 
-      await axios.post(API_URL, createJob);
-
-      setJobTitle("");
-      setCompany("");
-      setJobLocation("");
-      setJobType("");
-      setDescription("");
-
-
-      getJobs();
+      await axios.put(`${API_URL}/${id}`, updatedJob);
 
       navigate("/");
     } catch (error) {
-      console.error("Error Posting Job", error);
+      console.error("Error updating job", error);
     }
   };
 
@@ -94,11 +105,11 @@ function PostJobForm({ getJobs }) {
           onChange={handleDescription}
         ></textarea>
         <button className="btn btn-primary btn-round" type="submit">
-          Post Job
+          Edit Job
         </button>
       </form>
     </div>
   );
 }
 
-export default PostJobForm;
+export default UpdateJobForm;
