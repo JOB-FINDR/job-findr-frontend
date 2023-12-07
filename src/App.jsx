@@ -6,6 +6,7 @@ import UpdateJobForm from "./components/UpdateJobForm";
 import Navbar from "./components/Navbar";
 import "./App.css";
 import JobList from "./components/JobList";
+import FindJob from "./components/FindJob";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -17,7 +18,8 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/create" element={<PostJobForm />} />
-        <Route path="/update/:id" element={<UpdateJobForm />} />
+          <Route path="/update/:id" element={<UpdateJobForm />} />
+          <Route path="/jobs" element={< FindJob/>} />
         </Routes>
       </div>
     </>
