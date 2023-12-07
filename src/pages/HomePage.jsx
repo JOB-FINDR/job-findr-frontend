@@ -31,6 +31,8 @@ function HomePage(props) {
         <JobList jobs={jobs} getJobs={getJobs} />
 
         <Link to={"/jobs"}></Link>
+
+        <button>Post a Job</button>
       </div>
     </>
   );

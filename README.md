@@ -12,7 +12,7 @@
 
 # first page look
 
-- Navbar-->Find jobs, Login, Signup, home
+[x] Navbar-->Find jobs, Login, Signup, home
 - Main body --> search bar , button for find jobs, button for post a job
 - footer --> © 2023 Indeed
 Accessibility at Indeed
