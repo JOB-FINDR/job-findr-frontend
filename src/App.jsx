@@ -19,6 +19,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/create" element={<PostJobForm />} />
           <Route path="/update/:id" element={<UpdateJobForm />} />
+          <Route path="/delete/:id" element={<JobList/>} />
           <Route path="/jobs" element={< FindJob/>} />
         </Routes>
       </div>
