@@ -3,6 +3,7 @@ import HomePage from "./pages/HomePage";
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import "./App.css";
+import JobList from "./components/JobList";
 
 function App() {
   const [count, setCount] = useState(0);

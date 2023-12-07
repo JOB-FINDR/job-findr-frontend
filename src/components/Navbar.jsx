@@ -26,17 +26,17 @@ function Navbar (){
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/male">
+              <Link className="nav-link" to="/">
                 Find Jobs
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/female">
+              <Link className="nav-link" to="/">
                 Login
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/about">
+              <Link className="nav-link" to="/">
                 SignUp
               </Link>
             </li>
