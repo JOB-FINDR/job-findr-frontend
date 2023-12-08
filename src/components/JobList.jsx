@@ -6,6 +6,7 @@ import axios from "axios";
 const API_URL = "http://localhost:5005/api/jobs";
 
 function JobList(props) {
+  const [jobs, setJobs] = useState("")
   const handleDelete = (jobId) => {
     axios
       .delete(`${API_URL}/${jobId}`)
@@ -16,13 +17,14 @@ function JobList(props) {
       .catch((error) => {
         console.error("Error deleting job:", error);
       });
+      console.log(`Delete the product with id ${jobId}`);
   };
 
   return (
     <div className="container">
-      <div className="row">
+      <div className="row" >
         {props.jobs.map((job) => (
-          <div className="col-md-4" key={job.id}>
+          <div className="col-md-4" key={job._id}>
             <div className="card mb-4">
 
               <div className="card-body">
@@ -32,11 +34,11 @@ function JobList(props) {
                 <p className="card-text">Salary: {job.salary}</p>
                 <button
                   className="btn btn-danger"
-                  onClick={() => handleDelete(job.id)}
+                  onClick={() => handleDelete(job._id)}
                 >
                   Delete
                 </button>
-                <Link to={`/update/${job.id}`}>
+                <Link to={`/update/${job._id}`}>
                   <button className="btn btn-primary ml-2">Edit</button>
                 </Link>
               </div>

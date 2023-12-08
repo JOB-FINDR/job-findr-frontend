@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import axios from 'axios';
+import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
 const API_URL = "http://localhost:5005/api/jobs";
 
 function UpdateJobForm() {
-  const [jobTitle, setJobTitle] = useState("");
+  const [title, setTitle] = useState("");
   const [company, setCompany] = useState("");
   const [jobLocation, setJobLocation] = useState("");
   const [jobType, setJobType] = useState("");
@@ -20,7 +20,7 @@ function UpdateJobForm() {
         const response = await axios.get(`${API_URL}/${id}`);
         const job = response.data;
 
-        setJobTitle(job.jobTitle);
+        setTitle(job.title);
         setCompany(job.company);
         setJobLocation(job.jobLocation);
         setJobType(job.jobType);
@@ -33,42 +33,46 @@ function UpdateJobForm() {
     fetchJobDetails();
   }, [id]);
 
-  const handleJobTitle = (e) => setJobTitle(e.target.value);
+  const handleTitle = (e) => setTitle(e.target.value);
   const handleCompany = (e) => setCompany(e.target.value);
   const handleJobLocation = (e) => setJobLocation(e.target.value);
   const handleJobType = (e) => setJobType(e.target.value);
   const handleDescription = (e) => setDescription(e.target.value);
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      e.preventDefault();
-
       const updatedJob = {
-        jobTitle,
+        title,
         company,
         jobLocation,
         jobType,
         description,
       };
 
+      console.log(updatedJob);
+
       await axios.put(`${API_URL}/${id}`, updatedJob);
 
-      navigate("/");
+      navigate("/jobs");
     } catch (error) {
       console.error("Error updating job", error);
     }
   };
 
   return (
-    <div className="d-inline-flex flex-column justify-content-center align-items-center" style={{ maxWidth: "700px" }}>
+    <div
+      className="d-inline-flex flex-column justify-content-center align-items-center"
+      style={{ maxWidth: "700px" }}
+    >
       <form onSubmit={handleSubmit}>
         <input
           className="form-control"
           type="text"
           name="jobTitle"
           placeholder="Job Title"
-          value={jobTitle}
-          onChange={handleJobTitle}
+          value={title}
+          onChange={handleTitle}
         />
         <input
           className="form-control"
@@ -109,6 +113,7 @@ function UpdateJobForm() {
         </button>
       </form>
     </div>
+   
   );
 }
 

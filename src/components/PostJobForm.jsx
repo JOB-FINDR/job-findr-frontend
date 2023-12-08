@@ -1,50 +1,67 @@
-import React, { useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
+import { useNavigate, useParams } from "react-router-dom";
 
-const API_URL = "http://localhost:5005/api";
+const API_URL = "http://localhost:5005/api/jobs";
 
-function PostJobForm({ getJobs }) {
-  const [jobTitle, setJobTitle] = useState("");
+function PostJobForm() {
+  const [title, setTitle] = useState("");
   const [company, setCompany] = useState("");
   const [jobLocation, setJobLocation] = useState("");
   const [jobType, setJobType] = useState("");
   const [description, setDescription] = useState("");
 
   const navigate = useNavigate();
+  const { id } = useParams();
 
-  const handleJobTitle = (e) => setJobTitle(e.target.value);
+
+
+  useEffect(() => {
+    const fetchJobDetails = async () => {
+      try {
+        const response = await axios.get(`${API_URL}/${id}`);
+        const job = response.data;
+
+        setTitle(job.title);
+        setCompany(job.company);
+        setJobLocation(job.jobLocation);
+        setJobType(job.jobType);
+        setDescription(job.description);
+      } catch (error) {
+        console.error("Error fetching job details", error);
+      }
+    };
+
+    fetchJobDetails();
+  }, [id]);
+
+  const handleTitle = (e) => setTitle(e.target.value);
   const handleCompany = (e) => setCompany(e.target.value);
   const handleJobLocation = (e) => setJobLocation(e.target.value);
   const handleJobType = (e) => setJobType(e.target.value);
   const handleDescription = (e) => setDescription(e.target.value);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
 
+    e.preventDefault();
     try {
-      const createJob = {
-        jobTitle,
+  
+
+      const postedJob = {
+        title,
         company,
         jobLocation,
         jobType,
         description,
       };
 
-      await axios.post(API_URL, createJob);
+      console.log (postedJob);
+      
+      await axios.put(`${API_URL}/${id}`, postedJob);
 
-      setJobTitle("");
-      setCompany("");
-      setJobLocation("");
-      setJobType("");
-      setDescription("");
-
-
-      getJobs();
-
-      navigate("/");
+      navigate("/jobs");
     } catch (error) {
-      console.error("Error Posting Job", error);
+      console.error("Error posting job", error);
     }
   };
 
@@ -56,8 +73,8 @@ function PostJobForm({ getJobs }) {
           type="text"
           name="jobTitle"
           placeholder="Job Title"
-          value={jobTitle}
-          onChange={handleJobTitle}
+          value={title}
+          onChange={handleTitle}
         />
         <input
           className="form-control"
