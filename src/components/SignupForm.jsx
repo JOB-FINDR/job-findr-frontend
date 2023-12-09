@@ -18,7 +18,8 @@ const SignupForm = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5005/api/signup",formData
+        "http://localhost:5005/api/signup",
+        formData
       );
       console.log("Signup successful:", response.data);
     } catch (error) {
@@ -26,100 +27,107 @@ const SignupForm = () => {
     }
   };
   return (
-    
+    <section className="vh-100 bg-image">
+      <div className="mask d-flex align-items-center h-100 gradient-custom-3">
+        <div className="container h-100">
+          <div className="row d-flex justify-content-center align-items-center h-100">
+            <div className="col-12 col-md-9 col-lg-7 col-xl-6">
+              <div className="card">
+                <div className="card-body p-5">
+                  <h2 className="text-uppercase text-center mb-5">
+                    Create an account
+                  </h2>
 
-    <form
-      onSubmit={handleSignup}
-      className="vh-100"
-    >
-      <div className="container h-100">
-        <div className="row d-flex justify-content-center align-items-center h-100">
-          <div className="col-xl-9">
-            <h1 className="text-white mb-4">Apply for a job</h1>
-
-            <div className="card" >
-              <div className="card-body">
-                <div className="row align-items-center pt-4 pb-3">
-                  <div className="col-md-3 ps-5">
-                    <h6 className="mb-0">Full name</h6>
-                  </div>
-                  <div className="col-md-9 pe-5">
-                    <input
-                      type="text"
-                      name="username"
-                      onChange={handleInputChange}
-                      className="form-control form-control-lg"
-                    />
-                  </div>
-                </div>
-
-                <hr className="mx-n3" />
-
-                <div className="row align-items-center py-3">
-                  <div className="col-md-3 ps-5">
-                    <h6 className="mb-0">Email address</h6>
-                  </div>
-                  <div className="col-md-9 pe-5">
-                    <input
-                      type="email"
-                      name="email"
-                      onChange={handleInputChange}
-                      className="form-control form-control-lg"
-                      placeholder="example@example.com"
-                    />
-                  </div>
-                </div>
-
-                <hr className="mx-n3" />
-
-                <div className="row align-items-center py-3">
-                  <div className="col-md-3 ps-5">
-                    <h6 className="mb-0">Password</h6>
-                  </div>
-                  <div className="col-md-9 pe-5">
-                    <input
-                      type="password"
-                      name="password"
-                      onChange={handleInputChange}
-                      className="form-control form-control-lg"
-                      placeholder="example@example.com"
-                    />
-                  </div>
-                </div>
-
-        
-                <hr className="mx-n3" />
-
-                <div className="row align-items-center py-3">
-                  <div className="col-md-3 ps-5">
-                    <h6 className="mb-0">Upload CV</h6>
-                  </div>
-                  <div className="col-md-9 pe-5">
-                    <input
-                      className="form-control form-control-lg"
-                      id="formFileLg"
-                      type="file"
-                    />
-                    <div className="small text-muted mt-2">
-                      Upload your CV/Resume or any other relevant file. Max file
-                      size 50 MB
+                  <form onSubmit={handleSignup}>
+                    <div className="form-outline mb-4">
+                      <input
+                        type="text"
+                        name="username"
+                        onChange={handleInputChange}
+                        id="form3Example1cg"
+                        className="form-control form-control-lg"
+                      />
+                      <label className="form-label" for="form3Example1cg">
+                        Your Name
+                      </label>
                     </div>
-                  </div>
-                </div>
 
-                <hr className="mx-n3" />
+                    <div className="form-outline mb-4">
+                      <input
+                        type="email"
+                        name="email"
+                        placeholder="example@example.com"
+                        onChange={handleInputChange}
+                        id="form3Example3cg"
+                        className="form-control form-control-lg"
+                      />
+                      <label className="form-label" for="form3Example3cg">
+                        Your Email
+                      </label>
+                    </div>
 
-                <div className="px-5 py-4">
-                  <button type="submit" className="btn btn-primary btn-lg">
-                    Send application
-                  </button>
+                    <div className="form-outline mb-4">
+                      <input
+                        type="password"
+                        name="password"
+                        onChange={handleInputChange}
+                        id="form3Example4cg"
+                        className="form-control form-control-lg"
+                      />
+                      <label className="form-label" for="form3Example4cg">
+                        Password
+                      </label>
+                    </div>
+
+                    <div className="form-outline mb-4">
+                      <input
+                        type="password"
+                        id="form3Example4cdg"
+                        className="form-control form-control-lg"
+                      />
+                      <label className="form-label" for="form3Example4cdg">
+                        Repeat your password
+                      </label>
+                    </div>
+
+                    <div className="form-check d-flex justify-content-center mb-5">
+                      <input
+                        className="form-check-input me-2"
+                        type="checkbox"
+                        value=""
+                        id="form2Example3cg"
+                      />
+                      <label className="form-check-label" for="form2Example3g">
+                        I agree all statements in{" "}
+                        <a href="#!" className="text-body">
+                          <u>Terms of service</u>
+                        </a>
+                      </label>
+                    </div>
+
+                    <div className="d-flex justify-content-center">
+                      <button
+                        type="button"
+                        className="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
+                      >
+                        Register
+                      </button>
+                    </div>
+
+                    <p className="text-center text-muted mt-5 mb-0">
+                      Have already an account?{" "}
+                      <a href="#!" className="fw-bold text-body">
+                        <u>Login here</u>
+                      </a>
+                    </p>
+                  </form>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </form>
+    </section>
   );
 };
 export default SignupForm;
