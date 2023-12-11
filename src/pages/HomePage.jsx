@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import SearchBar from "../components/SearchBar";
 import SearchResultsList  from "../components/SearchResultsList";
-import Footer from "../components/Footer";
+
 
 const API_URL = "http://localhost:5005/api";
 
@@ -20,7 +20,7 @@ const [results, setResults] = useState([]);
               <SearchResultsList results={results} />
               <br />
               <h1>Create A Better Future For Yourself!</h1>
-             <Footer />
+            
 
             </div>
           </div>
