@@ -1,68 +1,63 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
-const API_URL = "http://localhost:5005/api";
+const API_URL = "http://localhost:5005/api/jobs";
 
 const JobDetailsPage = () => {
-  
-    const [requestedJob, setRequestedJob] = useState([]);
-    const [loading, setLoading] = useState(true);
+  const [requestedJob, setRequestedJob] = useState({});
+  const { id } = useParams();
+  const navigate = useNavigate();
 
-    const { jobId } = useParams();
-    const navigate = useNavigate();
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`${API_URL}/${id}`);
+        setRequestedJob(response.data);
+      } catch (err) {
+        console.log("Error fetching job details:", err);
+      }
+    };
 
-    useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const response = await axios.get(`${API_URL}/jobs${jobId}`);
+    fetchData();
+  }, [id]);
 
-          setRequestedJob(response.data);
-          console.log(response.data);
-          setLoading(false);
-        } catch (err) {
-          console.log("error");
-        }
-      };
+  const handleUpload = () => {
+    // Handle the upload functionality
+    console.log("Upload button clicked");
+    // Add your upload logic here
+  };
 
-      fetchData();
-    }, []);
+  return (
+    <div className="container mt-5">
+      <div className="card">
+        <div className="card-body">
+          <h3 className="card-title">{requestedJob.title}</h3>
+          <p className="card-text">{requestedJob.company}</p>
+          <p className="card-text">Location: {requestedJob.jobLocation}</p>
+          <p className="card-text">Type: {requestedJob.jobType}</p>
+          <p className="card-text">Description: {requestedJob.description}</p>
+          <p className="card-text">Salary: {requestedJob.salary}</p>
 
-    return (
-      <div
-        className="d-inline-flex flex-column justify-content-center align-items-center"
-        style={{ maxWidth: "700px" }}
-      >
-        {loading && (
-          <img
-            src="https://c.tenor.com/tEBoZu1ISJ8AAAAC/spinning-loading.gif"
-            alt="loading"
-          />
-        )}
+          <button
+            className="btn btn-primary"
+            onClick={() => {
+              navigate(-1);
+            }}
+          >
+            Back
+          </button>
 
-        {!loading && (
-          <>
-            <h3>Position: {requestedJob.title}</h3>
-            <p>Company: {requestedJob.company}</p>
-            <p>Description: {requestedJob.description}</p>
-
-            <p>Salary: {requestedJob.salary}</p>
-
-            <button
-              className="btn btn-primary"
-              onClick={() => {
-                navigate(-1);
-              }}
-            >
-              Back
-            </button>
-          </>
-        )}
+          <button
+            className="btn btn-success ml-2"
+            onClick={handleUpload}
+          >
+            Upload
+          </button>
+        </div>
       </div>
-    );
-  }
-
+    </div>
+  );
+};
 
 export default JobDetailsPage;
