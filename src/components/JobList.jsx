@@ -48,7 +48,9 @@ function JobList(props) {
                     <Link to={`/update/${job._id}`}>
                       <button className="btn btn-primary ml-2">Edit</button>
                     </Link>
-                    <button className="btn btn-success ml-2">Upload</button>
+                    <Link to={`/application/${job._id}`}>
+                  <button className="btn btn-success ml-2">Apply</button>
+                  </Link>
                   </div>
                 </div>
               </div>

@@ -10,6 +10,7 @@ import FindJob from "./pages/FindJobPage";
 import JobDetailsPage from "./pages/JobDetailsPage";
 import SignupForm from "./components/SignupForm";
 import Login from "./components/Login";
+import JobApplicationForm from "./components/JobApplicationForm";
 
 function App() {
   // const [results, setResults] = useState([]);
@@ -28,6 +29,8 @@ function App() {
           <Route path="/job/:id" element={<JobDetailsPage />} />
           <Route path="/signup" element={<SignupForm />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/application/:id" element={<JobApplicationForm />} />
+        
         </Routes>
       </div>
     </>
