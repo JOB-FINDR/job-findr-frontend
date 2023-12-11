@@ -11,6 +11,7 @@ import SearchBar from "./components/SearchBar";
 import SearchResultsList  from "./components/SearchResultsList";
 import JobDetailsPage from "./pages/JobDetailsPage";
 import SignupForm from "./components/SignupForm";
+import Login from "./components/Login";
 
 function App() {
   // const [results, setResults] = useState([]);
@@ -28,7 +29,7 @@ function App() {
           <Route path="/jobs" element={<FindJob />} />
           <Route path="/job/:id" element={<JobDetailsPage />} />
           <Route path="/signup" element={<SignupForm />} />
-
+          <Route path="/login" element={<Login />} />
         </Routes>
       </div>
     </>

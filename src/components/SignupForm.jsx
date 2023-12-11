@@ -3,9 +3,10 @@ import axios from "axios";
 
 const SignupForm = () => {
   const [formData, setFormData] = useState({
+    name: "",
     email: "",
     password: "",
-    name: "",
+    
   });
 
   const handleInputChange = (e) => {
@@ -18,7 +19,7 @@ const SignupForm = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5005/api/signup",
+        "http://localhost:5005/auth/signup",
         formData
       );
       console.log("Signup successful:", response.data);
@@ -106,7 +107,7 @@ const SignupForm = () => {
                     </div>
 
                     <div className="d-flex justify-content-center">
-                      <button
+                      <button  onClick={handleSignup}
                         type="button"
                         className="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
                       >

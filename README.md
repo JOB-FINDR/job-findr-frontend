@@ -41,7 +41,10 @@
 
 
 ## TODO LIST
-
+[x] signup form
+[] Login form
+[] Application form
+[] postjob form
 [] link post a job form to joblist
 [] functionality to login
 [] single job page
