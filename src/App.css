@@ -7,7 +7,7 @@
  
 .App {
   background-color: #eee;
-  height: 100vh;
+  height: 80vh;
   width: 100vw;
 }
 
@@ -26,9 +26,5 @@
 
 h1 {
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  
-}
-h1:hover {
   cursor: pointer;
-  color: #f8caf8;
 }
