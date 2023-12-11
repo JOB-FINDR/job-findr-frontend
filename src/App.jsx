@@ -7,8 +7,6 @@ import Navbar from "./components/Navbar";
 import "./App.css";
 import JobList from "./components/JobList";
 import FindJob from "./pages/FindJobPage";
-import SearchBar from "./components/SearchBar";
-import SearchResultsList  from "./components/SearchResultsList";
 import JobDetailsPage from "./pages/JobDetailsPage";
 import SignupForm from "./components/SignupForm";
 import Login from "./components/Login";

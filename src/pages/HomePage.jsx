@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import JobList from "../components/JobList";
 import { Link } from "react-router-dom";
 import SearchBar from "../components/SearchBar";
 import SearchResultsList  from "../components/SearchResultsList";
+import Footer from "../components/Footer";
 
 const API_URL = "http://localhost:5005/api";
 
@@ -18,6 +18,10 @@ const [results, setResults] = useState([]);
             <div className="search-bar-container">
               <SearchBar setResults={setResults} />
               <SearchResultsList results={results} />
+              <br />
+              <h1>Create A Better Future For Yourself!</h1>
+             <Footer />
+
             </div>
           </div>
         </div>

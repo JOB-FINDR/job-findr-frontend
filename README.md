@@ -42,16 +42,17 @@
 
 ## TODO LIST
 [x] signup form
-[] Login form
+[x] Login form
 [] Application form
-[] postjob form
-[] link post a job form to joblist
-[] functionality to login
+[x] postjob form
+[x] link post a job form to joblist
+[x] functionality to login
 [] single job page
-[] jobUpdate is not visible after updating in job list
+[x] jobUpdate is not visible after updating in job list
 [] change form styling in post a job component
-[] add footer 
-[] signup and login functionality.
+[x] add footer 
+[x] signup and login functionality.
+[] context
 
 
 

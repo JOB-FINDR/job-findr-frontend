@@ -7,7 +7,7 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post("http://localhost:5005/login", {
+      const response = await axios.post("http://localhost:5005/auth/login", {
         email,
         password,
       });
@@ -108,7 +108,7 @@ const Login = () => {
             </div>
 
             {/* // -- Submit button  */}
-            <button onClick={handleLogin} type="button" className="btn btn-primary btn-block mb-4"> Login</button>
+            <button onClick={handleLogin} type="button" className="btn btn-primary btn-block mb-4"  href="/jobs" > Login</button>
 
           </form>
 
