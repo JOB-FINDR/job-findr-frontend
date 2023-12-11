@@ -6,7 +6,7 @@ function Navbar() {
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
-          <img  src={logo} alt="logo" height="75vw" />
+          <img src={logo} alt="logo" height="75vw" />
         </Link>
         <button
           className="navbar-toggler"
@@ -20,18 +20,19 @@ function Navbar() {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <h2>Job Findr</h2>
-          
+          <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+            <h1>Job Findr</h1>
+          </Link>
+
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
               <Link className="nav-link active" to="/">
-                
                 Home
               </Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/jobs">
-                 Jobs
+                Jobs
               </Link>
             </li>
             <li className="nav-item">
@@ -44,17 +45,13 @@ function Navbar() {
                 SignUp
               </Link>
             </li>
-            <ul className="nav">
-              <li className="nav-item">
-                <button className="btn btn-outline-success">
-                  <Link to="/create" style={{ textDecoration: 'none', color: 'inherit' }}>
-                    Post a Job
-                  </Link>
-                </button>
-              </li>
-            </ul>
 
-
+            <li className="nav-item">
+              <Link className="nav-link" to="/create"
+              >
+                Post a Job
+              </Link>
+            </li>
           </ul>
           {/* <form className="d-flex" role="search">
             <input
@@ -70,6 +67,6 @@ function Navbar() {
         </div>
       </div>
     </nav>
-  )
+  );
 }
 export default Navbar;
