@@ -43,7 +43,7 @@ const SignupForm = () => {
                     <div className="form-outline mb-4">
                       <input
                         type="text"
-                        name="username"
+                        name="name"
                         onChange={handleInputChange}
                         id="form3Example1cg"
                         className="form-control form-control-lg"
