@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
-const API_URL = "http://localhost:5005/applications";
-
 function JobApplicationForm() {
   const [fullname, setFullname] = useState("");
   const [email, setEmail] = useState("");
@@ -12,25 +10,6 @@ function JobApplicationForm() {
 
   const navigate = useNavigate();
   const { id } = useParams();
-
-  // useEffect(() => {
-  //   const fetchApplicationDetails = async () => {
-  //     try {
-  //       const response = await axios.get(`${API_URL}/${id}`);
-  //       const application = response.data;
-  //       console.log(response.data);
-
-  //       setFullname(application.fullname);
-  //       setEmail(application.email);
-  //       setCoverletter(application.coverletter);
-  //       setCv(application.cv);
-  //     } catch (error){
-  //       console.log("Error fetching application details", error)
-  //     }
-  //   };
-
-  //   fetchApplicationDetails();
-  // },[id]);
 
   const handleFullname = (e) => setFullname(e.target.value);
   const handleEmail = (e) => setEmail(e.target.value);
@@ -48,10 +27,14 @@ function JobApplicationForm() {
         // jobId,
         cv,
       };
-      
 
-      await axios.post(`${API_URL}`, newApplication);
+      await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/applications`,
+        newApplication
+      );
       console.log(newApplication);
+
+      alert("Your application has been submitted successfully")
 
       navigate();
     } catch (err) {
@@ -60,88 +43,94 @@ function JobApplicationForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} class="vh-100">
-      <div class="container h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-          <div class="col-xl-9">
-            <h1 class="text-white mb-4">Apply for a job</h1>
+    <form onSubmit={handleSubmit} className="vh-100">
+      <div className="container h-100">
+        <div className="row d-flex justify-content-center align-items-center h-100">
+          <div className="col-xl-9">
+            <h1 className="text-white mb-4">Apply for a job</h1>
 
-            <div class="card">
-              <div class="card-body">
-                <div class="row align-items-center pt-4 pb-3">
-                  <div class="col-md-3 ps-5">
-                    <h6 class="mb-0">Full name</h6>
+            <div className="card">
+              <div className="card-body">
+                <div className="row align-items-center pt-4 pb-3">
+                  <div className="col-md-3 ps-5">
+                    <h6 className="mb-0">Full name</h6>
                   </div>
-                  <div class="col-md-9 pe-5">
+                  <div className="col-md-9 pe-5">
                     <input
                       type="text"
                       name="name"
                       onChange={handleFullname}
-                      class="form-control form-control-lg"
+                      className="form-control form-control-lg"
                     />
                   </div>
                 </div>
 
-                <hr class="mx-n3" />
+                <hr className="mx-n3" />
 
-                <div class="row align-items-center py-3">
-                  <div class="col-md-3 ps-5">
-                    <h6 class="mb-0">Email address</h6>
+                <div className="row align-items-center py-3">
+                  <div className="col-md-3 ps-5">
+                    <h6 className="mb-0">Email address</h6>
                   </div>
-                  <div class="col-md-9 pe-5">
+                  <div className="col-md-9 pe-5">
                     <input
                       type="email"
                       onChange={handleEmail}
-                      class="form-control form-control-lg"
+                      className="form-control form-control-lg"
                       placeholder="example@example.com"
                     />
                   </div>
                 </div>
 
-                <hr class="mx-n3" />
+                <hr className="mx-n3" />
 
-                <div class="row align-items-center py-3">
-                  <div class="col-md-3 ps-5">
-                    <h6 class="mb-0">Upload Cover Letter</h6>
+                <div className="row align-items-center py-3">
+                  <div className="col-md-3 ps-5">
+                    <h6 className="mb-0">Upload Cover Letter</h6>
                   </div>
-                  <div class="col-md-9 pe-5">
+                  <div className="col-md-9 pe-5">
                     <input
                       onChange={handleCoverLetter}
-                      class="form-control form-control-lg"
+                      className="form-control form-control-lg"
                       id="formFileLg"
                       type="file"
                     />
-                    <div class="small text-muted mt-2">
+                    <div className="small text-muted mt-2">
                       Upload your cover letter. Max file size 50 MB
                     </div>
                   </div>
                 </div>
 
-                <hr class="mx-n3" />
+                <hr className="mx-n3" />
 
-                <div class="row align-items-center py-3">
-                  <div class="col-md-3 ps-5">
-                    <h6 class="mb-0">Upload CV</h6>
+                <div className="row align-items-center py-3">
+                  <div className="col-md-3 ps-5">
+                    <h6 className="mb-0">Upload CV</h6>
                   </div>
-                  <div class="col-md-9 pe-5">
+                  <div className="col-md-9 pe-5">
                     <input
                       onChange={handleCv}
-                      class="form-control form-control-lg"
+                      className="form-control form-control-lg"
                       id="formFileLg"
                       type="file"
                     />
-                    <div class="small text-muted mt-2">
+                    <div className="small text-muted mt-2">
                       Upload your CV/Resume or any other relevant file. Max file
                       size 50 MB
                     </div>
                   </div>
                 </div>
 
-                <hr class="mx-n3" />
+                <hr className="mx-n3" />
 
-                <div class="px-5 py-4">
-                  <button type="submit" class="btn btn-primary btn-lg">
-                    Send application
+                <div className="px-5 py-4">
+                  <button
+                    type="submit"
+                    className="btn btn-primary btn-lg"
+                    onClick={() =>
+                      alert("Your application has been submitted successfully")
+                    }
+                  >
+                    Submit Application
                   </button>
                 </div>
               </div>

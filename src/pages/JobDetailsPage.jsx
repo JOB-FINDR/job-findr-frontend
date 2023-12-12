@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
-const API_URL = "http://localhost:5005/api/jobs";
+
 
 const JobDetailsPage = () => {
   const [requestedJob, setRequestedJob] = useState({});
@@ -12,7 +13,7 @@ const JobDetailsPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${API_URL}/${id}`);
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/jobs/${id}`);
         setRequestedJob(response.data);
       } catch (err) {
         console.log("Error fetching job details:", err);
@@ -24,7 +25,7 @@ const JobDetailsPage = () => {
 
   const handleUpload = () => {
     // Handle the upload functionality
-    console.log("Upload button clicked");
+    console.log("Apply button clicked");
     // Add your upload logic here
   };
 
@@ -48,12 +49,13 @@ const JobDetailsPage = () => {
             Back
           </button>
 
+          <Link to={`/application/${id}`}>
           <button
             className="btn btn-success ml-2"
             onClick={handleUpload}
           >
-            Upload
-          </button>
+            Apply
+          </button></Link>
         </div>
       </div>
     </div>
@@ -61,3 +63,5 @@ const JobDetailsPage = () => {
 };
 
 export default JobDetailsPage;
+
+

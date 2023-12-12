@@ -5,7 +5,6 @@ import SearchBar from "../components/SearchBar";
 import SearchResultsList  from "../components/SearchResultsList";
 
 
-const API_URL = "http://localhost:5005/api";
 
 function HomePage(props) {
 const [results, setResults] = useState([]);

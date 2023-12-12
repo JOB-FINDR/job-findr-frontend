@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
-const API_URL = "http://localhost:5005/api/jobs";
-
 function PostJobForm() {
   const [title, setTitle] = useState("");
   const [company, setCompany] = useState("");
@@ -38,7 +36,7 @@ function PostJobForm() {
 
       console.log(postedJob);
 
-      await axios.post(`${API_URL}`, postedJob);
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/jobs`, postedJob);
 
       navigate("/jobs");
     } catch (error) {

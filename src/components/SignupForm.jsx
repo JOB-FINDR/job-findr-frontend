@@ -19,7 +19,7 @@ const SignupForm = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5005/auth/signup",
+        `${import.meta.env.VITE_API_URL}/auth/signup`,
         formData
       );
       console.log("Signup successful:", response.data);

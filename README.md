@@ -40,19 +40,23 @@
 [] Login Pages
 
 
-## TODO LIST
+
 [x] signup form
 [x] Login form
-[] Application form
+[x] Application form
 [x] postjob form
 [x] link post a job form to joblist
 [x] functionality to login
-[] single job page
+[x] single job page
 [x] jobUpdate is not visible after updating in job list
-[] change form styling in post a job component
+[x] change form styling in post a job component
 [x] add footer 
 [x] signup and login functionality.
+
+## TODO LIST
 [] context
+[] what happens after login successfully
+
 
 
 

@@ -3,14 +3,14 @@ import axios from "axios";
 import JobList from "../components/JobList";
 import { Link } from "react-router-dom";
 
-const API_URL = "http://localhost:5005/api";
+
 
 function FindJob() {
   const [jobs, setJobs] = useState([]);
 
   const getJobs = () => {
     axios
-      .get(`${API_URL}/jobs`)
+      .get(`${import.meta.env.VITE_API_URL}/api/jobs`)
       .then(function (response) {
         setJobs(response.data);
         console.log(response.data);

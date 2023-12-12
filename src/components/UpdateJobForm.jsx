@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
-const API_URL = "http://localhost:5005/api/jobs";
 
 function UpdateJobForm() {
   const [title, setTitle] = useState("");
@@ -18,7 +17,7 @@ function UpdateJobForm() {
   useEffect(() => {
     const fetchJobDetails = async () => {
       try {
-        const response = await axios.get(`${API_URL}/${id}`);
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/jobs/${id}`);
         const job = response.data;
 
         setTitle(job.title);
@@ -56,7 +55,7 @@ function UpdateJobForm() {
 
       console.log(updatedJob);
 
-      await axios.put(`${API_URL}/${id}`, updatedJob);
+      await axios.put(`${import.meta.env.VITE_API_URL}/api/jobs/${id}`, updatedJob);
 
       navigate("/jobs");
     } catch (error) {
