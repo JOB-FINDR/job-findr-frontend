@@ -16,31 +16,36 @@ function JobApplicationForm() {
   const handleCoverLetter = (e) => setCoverletter(e.target.value);
   const handleCv = (e) => setCv(e.target.value);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
 
-    try {
-      const newApplication = {
-        fullname,
-        email,
-        coverLetter,
-        // jobId,
-        cv,
-      };
 
-      await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/applications`,
-        newApplication
-      );
-      console.log(newApplication);
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-      alert("Your application has been submitted successfully")
+  try {
+    const newApplication = {
+      fullname,
+      email,
+      coverLetter,
+      cv,
+    };
 
-      navigate();
-    } catch (err) {
-      console.log("Error fetching application", err);
-    }
-  };
+    await axios.post(
+      `${import.meta.env.VITE_API_URL}/api/applications`,
+      newApplication
+    );
+
+
+    alert("Your application has been sent successfully!"); 
+
+    navigate("/jobs"); // Redirect or perform any other actions after successful submission
+  } catch (err) {
+    console.log("Error fetching application", err);
+
+  }
+};
+
+// ... (existing code)
+
 
   return (
     <form onSubmit={handleSubmit} className="vh-100">
