@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const SignupForm = () => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -22,11 +25,16 @@ const SignupForm = () => {
         `${import.meta.env.VITE_API_URL}/auth/signup`,
         formData
       );
+
       console.log("Signup successful:", response.data);
+
+      // Redirect to the login page after successful signup
+      navigate("/login");
     } catch (error) {
       console.error("Signup failed:", error.response.data);
     }
   };
+
   return (
     <section className="vh-100 bg-image">
       <div className="mask d-flex align-items-center h-100 gradient-custom-3">
