@@ -53,7 +53,7 @@ const Login = () => {
   <div className="card mb-3">
     <div className="row g-0 d-flex align-items-center">
       <div className="col-lg-4 d-none d-lg-flex">
-        <img src="src/images/login.jpeg" alt="job search image"
+        <img src="https://media.istockphoto.com/id/1279104620/photo/top-view-of-a-white-desktop-concept-job-search.jpg?s=612x612&w=0&k=20&c=Ow_kvA2wQ4rLlqX_oFHgpjLb1JMKyPQKLOPzbu6w6qw=" alt="job search image"
           className="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
       </div>
       <div className="col-lg-8">
