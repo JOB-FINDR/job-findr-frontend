@@ -1,11 +1,31 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 
-function JobList(props) {
-  const [jobs, setJobs] = useState("");
+function JobListPage(props) {
+  const [jobs, setJobs] = useState([]);
+
+  const getAllJobs = () => {
+
+    // Get the token from the localStorage
+    const storedToken = localStorage.getItem("authToken");
+    // Send the token through the request "Authorization" Headers
+    axios
+      .get(`${import.meta.env.VITE_API_URL}/api/jobs`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((response) => setJobs(response.data))
+      .catch((error) => console.log(error));
+  };
+  // We set this effect will run only once, after the initial render
+  // by setting the empty dependency array - []
+  useEffect(() => {
+    getAllJobs();
+  }, []);
+
+  
 
   const handleDelete = (jobId) => {
     axios
@@ -61,4 +81,4 @@ function JobList(props) {
   );
 }
 
-export default JobList;
+export default JobListPage;

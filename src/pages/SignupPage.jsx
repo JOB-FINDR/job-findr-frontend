@@ -1,42 +1,42 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const SignupForm = () => {
+function SignupPage(props) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [errorMessage, setErrorMessage] = useState(undefined);
+
   const navigate = useNavigate();
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
-    
-  });
+  const handleEmail = (e) => setEmail(e.target.value);
+  const handlePassword = (e) => setPassword(e.target.value);
+  const handleName = (e) => setName(e.target.value);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSignup = async (e) => {
+  const handleSignupSubmit = (e) => {
     e.preventDefault();
+    // Create an object representing the request body
+    const requestBody = { email, password, name };
+  
 
-    try {
-      const response = await axios.post(
-        `${import.meta.env.VITE_API_URL}/auth/signup`,
-        formData
-      );
-
-      console.log("Signup successful:", response.data);
-
-      // Redirect to the login page after successful signup
+  // Make an axios request to the API
+  // If POST request is successful redirect to login page
+  // If the request resolves with an error, set the error message in the state
+  axios
+    .post(`${import.meta.env.VITE_API_URL}/auth/signup`, requestBody)
+    .then((response) => {
       navigate("/login");
-    } catch (error) {
-      console.error("Signup failed:", error.response.data);
-    }
+    })
+    .catch((error) => {
+      const errorDescription = error.response.data.message;
+      setErrorMessage(errorDescription);
+    });
   };
 
   return (
-    <section className="vh-100 bg-image">
+    <div>
+      <section className="vh-100 bg-image">
       <div className="mask d-flex align-items-center h-100 gradient-custom-3">
         <div className="container h-100">
           <div className="row d-flex justify-content-center align-items-center h-100">
@@ -47,12 +47,12 @@ const SignupForm = () => {
                     Create an account
                   </h2>
 
-                  <form onSubmit={handleSignup}>
+                  <form onSubmit={handleSignupSubmit}>
                     <div className="form-outline mb-4">
                       <input
                         type="text"
                         name="name"
-                        onChange={handleInputChange}
+                        onChange={handleName}
                         id="form3Example1cg"
                         className="form-control form-control-lg"
                       />
@@ -66,7 +66,7 @@ const SignupForm = () => {
                         type="email"
                         name="email"
                         placeholder="example@example.com"
-                        onChange={handleInputChange}
+                        onChange={handleEmail}
                         id="form3Example3cg"
                         className="form-control form-control-lg"
                       />
@@ -79,7 +79,7 @@ const SignupForm = () => {
                       <input
                         type="password"
                         name="password"
-                        onChange={handleInputChange}
+                        onChange={handlePassword}
                         id="form3Example4cg"
                         className="form-control form-control-lg"
                       />
@@ -115,11 +115,12 @@ const SignupForm = () => {
                     </div>
 
                     <div className="d-flex justify-content-center">
-                      <button  onClick={handleSignup}
-                        type="button"
+                      <button
+                        
+                        type="submit"
                         className="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
                       >
-                        Register
+                        Sign Up
                       </button>
                     </div>
 
@@ -137,6 +138,9 @@ const SignupForm = () => {
         </div>
       </div>
     </section>
+    { errorMessage && <p className="error-message">{errorMessage}</p> }
+
+    </div>
   );
-};
-export default SignupForm;
+}
+export default SignupPage;

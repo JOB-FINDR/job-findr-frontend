@@ -5,15 +5,16 @@ import PostJobForm from "./components/PostJobForm";
 import UpdateJobForm from "./components/UpdateJobForm";
 import Navbar from "./components/Navbar";
 import "./App.css";
-import JobList from "./components/JobList";
+import JobList from "./pages/JobListPage";
 import FindJob from "./pages/FindJobPage";
 import JobDetailsPage from "./pages/JobDetailsPage";
-import SignupForm from "./components/SignupForm";
-import Login from "./components/Login";
+import SignupForm from "./pages/SignupPage";
+import LoginPage from "./pages/LoginPage";
 import JobApplicationForm from "./components/JobApplicationForm";
+import IsPrivate from "./components/IsPrivate";
+import IsAnon from "./components/IsAnon";
 
 function App() {
-  // const [results, setResults] = useState([]);
 
   return (
     <>
@@ -22,14 +23,14 @@ function App() {
         
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/create" element={<PostJobForm />} />
-          <Route path="/update/:id" element={<UpdateJobForm />} />
-          <Route path="/delete/:id" element={<JobList />} />
-          <Route path="/jobs" element={<FindJob />} />
-          <Route path="/job/:id" element={<JobDetailsPage />} />
-          <Route path="/signup" element={<SignupForm />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/application/:id" element={<JobApplicationForm />} />
+          <Route path="/create" element={<IsPrivate> <PostJobForm /> </IsPrivate>} />
+          <Route path="/update/:id" element={<IsPrivate> <UpdateJobForm /> </IsPrivate>} />
+          <Route path="/delete/:id" element={<IsPrivate> <JobList /> </IsPrivate>} />
+          <Route path="/jobs" element={<IsPrivate> <FindJob /> </IsPrivate>} />
+          <Route path="/job/:id" element={<IsPrivate> <JobDetailsPage /> </IsPrivate>} />
+          <Route path="/signup" element={<IsAnon> <SignupForm /> </IsAnon>} />
+          <Route path="/login" element={ <IsAnon> <LoginPage /> </IsAnon>  } />
+          <Route path="/application/:id" element={<IsPrivate> <JobApplicationForm /> </IsPrivate>} />
         
         </Routes>
       </div>

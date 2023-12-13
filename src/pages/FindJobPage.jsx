@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import JobList from "../components/JobList";
+import JobList from "./JobListPage";
 import { Link } from "react-router-dom";
 
 
