@@ -6,30 +6,33 @@ import { Link } from "react-router-dom";
 
 
 const JobDetailsPage = (props) => {
-  const [requestedJob, setRequestedJob] = useState(null);
+  const [requestedJob, setRequestedJob] = useState({});
   const { id } = useParams();
   const navigate = useNavigate();
+  console.log(id);
+  const storedToken = localStorage.getItem('authToken');
 
   const getJob = () => {
+    console.log('getting job')
     // Get the token from the localStorage
-    const storedToken = localStorage.getItem('authToken');
-
+  
     //send the token through the request "Authorization" Headers
     axios
-    .get(
-      `${import.meta.env.VITE_API_URL}/api/jobs/${id}`,
+    .get(`${import.meta.env.VITE_API_URL}/api/jobs/${id}`,
       {headers: {Authorization: `Bearer ${storedToken}`}}
     )
     .then((response) => {
       const oneJob = response.data;
+      console.log(response.data);
       setRequestedJob(oneJob);
     })
     .catch((error) => console.log(error));
   }
 
   useEffect(() => {
+    console.log('from useEffect')
     getJob();
-  }, [id] );
+  }, [] );
 
   const handleUpload = () => {
     // Handle the upload functionality
