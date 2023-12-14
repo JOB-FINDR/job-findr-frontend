@@ -55,7 +55,11 @@ function UpdateJobForm() {
 
       console.log(updatedJob);
 
-      await axios.put(`${import.meta.env.VITE_API_URL}/api/jobs/${id}`, updatedJob);
+      const storedToken = localStorage.getItem("authToken");
+
+      await axios.put(`${import.meta.env.VITE_API_URL}/api/jobs/${id}`, updatedJob,{
+        headers: { Authorization: `Bearer ${storedToken}` }
+      });
 
       navigate("/jobs");
     } catch (error) {

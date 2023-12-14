@@ -21,6 +21,7 @@ function Navbar() {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
+        <h1>Job Findr</h1>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav">
             <li className="nav-item">
@@ -44,11 +45,13 @@ function Navbar() {
                 </Link>
               </li>
             )}
+            {isLoggedIn && (
             <li className="nav-item">
               <Link className="nav-link" to="/create">
                 Post a Job
               </Link>
             </li>
+            )}
           </ul>
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             {isLoggedIn && (
