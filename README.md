@@ -1,78 +1,21 @@
-## FRONTEND PLAN:
-#  MVP PLANNING
-[x] App idea
-[x] create an organisation and repository on github
-[x] Create a backend API
-[] set the milestones
-[x] View List of Jobs
-[] View Job Details(by id)
-[] Add a New Job
-[x] Update Existing Job
-[x] Delete a Job
 
-# first page look
+Frontend Readme
+Description
+This repository contains the frontend code for the Job Board application. The application is built with React and allows users to sign up and log in first then browse, add, delete, edit job listings, apply for jobs, and manage their applications.
 
-[x] Navbar-->Find jobs, Login, Signup, home
-[x] Main body --> search bar , button for find jobs, button for post a job
-- footer --> © 2023 Indeed
+Frontend Repository: https://github.com/JOB-FINDR/job-findr-frontend 
+Instructions to Run this App Locally:
+1- Clone the Repository:
+git clone <frontend-repo-url>
 
+2- Install Dependencies:
+npm install
 
-[x] button for create a job --> form = job title, company,job location, job type, salary range,
+3- Environment Variables:
+Create a.env file in the root of the frontend directory.
 
+4- Run the Application:
+Npm run dev
 
-
-
-# components
-[x] FindJobs
-[x] JobDetails(Include a Apply button)
-[x] ApplicationForm(firstName, lastName, Phone number, emailAddress, coverLetter, cv) submit application button
-[x] PostJobForm(JobTitle, company, job location, job type, description, ) post a job button
-[x] UpdateJobForm(JobTitle, company, job location, job type, description, ) edit a job button
-[x] DeleteJob(delete button)
-
-
-# PAGES
-[x] HomePage
-[x] Job Listings Page --> CRUD --> add job, read a job, update a job, delete a job 
-[x] Job Details Page
-[x] Application Form Page
-[x] Signup form 
-[] Login Pages
-
-
-
-[x] signup form
-[x] Login form
-[x] Application form
-[x] postjob form
-[x] link post a job form to joblist
-[x] functionality to login
-[x] single job page
-[x] jobUpdate is not visible after updating in job list
-[x] change form styling in post a job component
-[x] add footer 
-[x] signup and login functionality.
-
-## TODO LIST
-[] context
-[] what happens after login successfully
-
-
-
-
-# REACT APP
-[] Initialize React App with Vite
-[] Ensure you have the react-router-dom
-
-
-
-# STYLE AND CSS
-[]
-
-# BONUS FUNCTIONALITY
-Footer Page (IG account etc)
-Search 
-Shopping Card
-Filter
-
-
+Demo
+Visit https://job-findr.netlify.app  to see the final version of the project.
